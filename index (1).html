@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hajju Ogah - Airbnb Operations VA | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E74C3C;
+            --primary-dark: #C0392B;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
+            --bg: #FAFBFC;
+            --card: #FFFFFF;
+            --border: #E8E8E8;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .photo-wrapper {
+            flex-shrink: 0;
+        }
+
+        .photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .header-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .blurb {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 16px;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-btn.linkedin {
+            background: #0077B5;
+            color: white;
+        }
+
+        .social-btn.portfolio {
+            background: var(--primary);
+            color: white;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Experience */
+        .exp-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .exp-role {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            background: #F0F0F0;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .exp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Education */
+        .edu-item {
+            margin-bottom: 16px;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .edu-year {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: #F8F9FA;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .skill-tag i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        /* Tools */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 14px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #F8F9FA;
+            border-radius: 8px;
+        }
+
+        .tool-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .tool-info {
+            flex: 1;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .tool-bar {
+            height: 6px;
+            background: #E0E0E0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .tool-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .tool-level {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .portfolio-card {
+            background: #F8F9FA;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .portfolio-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .portfolio-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .portfolio-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Two column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .name {
+                font-size: 1.8rem;
+            }
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-grid {
+                justify-content: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Highlight */
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="photo-wrapper">
+                <img src="photo.png" alt="Hajju Ogah" class="photo">
+            </div>
+            <div class="header-info">
+                <h1 class="name">Hajju Ogah</h1>
+                <div class="title">Airbnb Operations VA | Guest Experience Specialist | Short-Term Rental Coordinator</div>
+                <p class="blurb">
+                    Highly organized and proactive operations professional with 3+ years of experience managing end-to-end guest experiences, property operations, and remote team coordination. Proven expertise in handling Airbnb listings, coordinating cleaning and maintenance teams, and delivering exceptional hospitality to international guests. Thrives in fast-paced environments and genuinely enjoys creating memorable guest experiences. Experienced working across UK/EU time zones with fully remote, globally distributed teams.
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:ogahhajju@gmail.com">ogahhajju@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+234 803 055 5028</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nigeria (UK Hours)</span>
+                    </div>
+                </div>
+                <div class="social-links no-print">
+                    <a href="#" class="social-btn linkedin" onclick="alert('Add your LinkedIn URL here!'); return false;">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#portfolio" class="social-btn portfolio">
+                        <i class="fas fa-briefcase"></i> View Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column: Skills & Tools -->
+        <div class="two-col">
+            <!-- Core Competencies -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-star"></i> Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-tag"><i class="fas fa-check"></i> Guest Communication</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Calendar & Booking Mgmt</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Cleaning Coordination</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Maintenance Troubleshooting</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Check-in/Check-out Process</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Review Management</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Pricing & Listing Optimization</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Remote Team Coordination</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Multi-timezone Scheduling</div>
+                    <div class="skill-tag"><i class="fas fa-check"></i> Crisis Resolution</div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-laptop"></i> Tools & Platforms</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #FF5A5F;"><i class="fab fa-airbnb" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">Airbnb Host Dashboard</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 95%"></div></div>
+                            <div class="tool-level">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #4285F4;"><i class="fab fa-google" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">Google Workspace</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 95%"></div></div>
+                            <div class="tool-level">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #4A154B;"><i class="fab fa-slack" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">Slack</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 90%"></div></div>
+                            <div class="tool-level">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #00A4EF;"><i class="fas fa-video" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">Zoom / Google Meet</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 90%"></div></div>
+                            <div class="tool-level">Advanced</div>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #635BFF;"><i class="fab fa-stripe" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">Stripe / Payment Tools</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 75%"></div></div>
+                            <div class="tool-level">Intermediate</div>
+                        </div>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-icon" style="background: #2D3436;"><i class="fas fa-clock" style="color: white;"></i></div>
+                        <div class="tool-info">
+                            <div class="tool-name">TimeDoctor / Toggl</div>
+                            <div class="tool-bar"><div class="tool-fill" style="width: 85%"></div></div>
+                            <div class="tool-level">Proficient</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-role">Executive Assistant & Airbnb Operations Coordinator</div>
+                    <div class="exp-date">2023 - 2026</div>
+                </div>
+                <div class="exp-company">Shekinah Educational Services | Remote (UK Hours)</div>
+                <ul class="exp-list">
+                    <li><span class="highlight">Managed company-owned Airbnb properties</span> for international students arriving in the UK, handling the full guest lifecycle from booking inquiry to check-out and review collection</li>
+                    <li>Coordinated check-ins and check-outs for students arriving from multiple countries, providing detailed arrival instructions, local area guides, and 24/7 communication support during their stay</li>
+                    <li>Liaised with cleaning teams to ensure properties met high cleanliness standards between guest turnovers, conducting quality checks and flagging issues promptly</li>
+                    <li>Managed maintenance coordination by communicating with contractors and service providers to resolve issues quickly, minimizing guest disruption</li>
+                    <li>Handled guest inquiries before, during, and after stays via Airbnb messaging, WhatsApp, and email—maintaining a <span class="highlight">consistent 5-star review rating</span></li>
+                    <li>Monitored and updated Airbnb calendars, pricing, and listing details to optimize occupancy and revenue</li>
+                    <li>Encouraged and managed guest reviews, implementing follow-up strategies that significantly boosted positive feedback</li>
+                    <li>Served as the main point of contact for guests, resolving concerns with professionalism and a solution-focused approach</li>
+                    <li>Managed complex CEO calendars, inbox triage, and domestic/international travel coordination across multiple time zones</li>
+                    <li>Started as an intern and earned promotion to Executive Assistant after demonstrating strong organizational skills and initiative</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="edu-item">
+                <div class="edu-degree">Bachelor of Science in Glass and Silicate Technology</div>
+                <div class="edu-school">Federal University of Technology</div>
+                <div class="edu-year">2025</div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="card" id="portfolio">
+            <h2 class="card-title"><i class="fas fa-folder-open"></i> Portfolio & Sample Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fab fa-airbnb"></i></div>
+                    <div class="portfolio-title">Airbnb Guest Management</div>
+                    <div class="portfolio-desc">Managed full guest lifecycle for company-owned Airbnb properties hosting international students in the UK. Handled bookings, check-ins, cleaning coordination, and review management with consistent 5-star ratings.</div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="portfolio-title">Calendar & Operations Coordination</div>
+                    <div class="portfolio-desc">Coordinated complex multi-property calendars, cleaning schedules, and maintenance workflows across UK time zones. Maintained 100% uptime on guest communications with zero missed check-ins.</div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fas fa-users"></i></div>
+                    <div class="portfolio-title">Remote Team Leadership</div>
+                    <div class="portfolio-desc">Supported remote, globally distributed teams across US and EU time zones. Managed executive schedules, event planning, and operational logistics for a growing educational startup.</div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fas fa-headset"></i></div>
+                    <div class="portfolio-title">Guest Experience Excellence</div>
+                    <div class="portfolio-desc">Created welcome guides, local area recommendations, and standardized communication templates that improved guest satisfaction scores and reduced repetitive inquiry response time by 60%.</div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fas fa-tools"></i></div>
+                    <div class="portfolio-title">Maintenance & Vendor Coordination</div>
+                    <div class="portfolio-desc">Built and maintained a network of reliable contractors (cleaners, plumbers, electricians) across property locations. Resolved 95% of maintenance issues within 24 hours of guest report.</div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="portfolio-title">Process Improvement</div>
+                    <div class="portfolio-desc">Developed streamlined check-in/check-out SOPs, automated messaging templates, and a property inspection checklist that improved operational efficiency and reduced guest complaints.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
+            <div class="skills-grid">
+                <div class="skill-tag"><i class="fas fa-star"></i> Maintained 5-star guest ratings across all managed properties</div>
+                <div class="skill-tag"><i class="fas fa-star"></i> 100% check-in success rate for international student arrivals</div>
+                <div class="skill-tag"><i class="fas fa-star"></i> Promoted from Intern to Executive Assistant within 1 year</div>
+                <div class="skill-tag"><i class="fas fa-star"></i> Reduced guest complaint resolution time to under 4 hours</div>
+                <div class="skill-tag"><i class="fas fa-star"></i> Zero missed cleanings across 3+ years of operations</div>
+                <div class="skill-tag"><i class="fas fa-star"></i> Fluent in English with excellent written communication</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Hajju Ogah | Airbnb Operations VA | Reliable. Organized. Guest-Focused.</p>
+        </div>
+    </div>
+</body>
+</html>
